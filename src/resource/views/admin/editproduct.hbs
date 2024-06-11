@@ -1,0 +1,279 @@
+
+{{>admin-header}}
+<input type="hidden" id="id" name="id" value='{{product._id}}'>
+<form>
+  <div class="form-group">
+    <label for="productName">Tên sản phẩm</label>
+    <input type="text" class="form-control" id="productName" name='productName' placeholder="Vui lòng nhập" value='{{product.productName}}' required>
+  </div>
+  <div class="form-group">
+    <label for="productPrice">Giá sản phẩm</label>
+    <input type="text" class="form-control" id="productPrice" name='productPrice'  placeholder="Vui lòng nhập" value='{{product.productPrice}}' required>
+     <div class='updateSalePrice btn btn-primary'>Cập nhật giá sau khi sale</d>
+  </div>
+
+  <div class="form-group">
+    <label for="sale">Giảm giá bao nhiêu phần trăm</label>
+    <p class='priceSale'></p>
+    <input type="text" class="form-control" id="sale" name='sale' placeholder="Phần trăm giảm giá" min='0' max='100' required value='{{product.sale}}'>
+    <div class='updateSalePercent btn btn-primary'>Cập % giảm giá theo giá gốc và giá đã sale</d>
+  </div>
+
+  {{!-- Chỉ ở client --}}
+  <div class="form-group">
+    <label for="sale">Giá Sau Khi Sale</label>
+    <input type="number" class="form-control" id="priceAfterSale" name='priceAfterSale' placeholder="Giá sau khi giảm">
+      <div class='updateOriginPrice btn btn-primary'>Cập nhật giá gốc</div>
+  </div>
+  {{!-- Chỉ ở client --}}
+
+  <div class="form-group">
+    <label for="productDescription">Mô tả sản phẩm</label>
+    <textarea  type="text"  class="form-control" id="productDescription" name='productDescription' placeholder="Mỗi mô tả một dòng" rows="10" cols="50" required>
+      {{#each product.productDescription}}
+      {{this.descText}}
+      {{/each}}
+    </textarea>
+  </div>
+
+  
+
+   <div class="form-group">
+    <label for="productColor">Màu sắc</label>
+    <input type="text" class="form-control" id="productColor" name='productColor' placeholder="Vui lòng nhập" value='{{product.productColor}}' required>
+  </div>
+<p>Giới tính</p>
+
+<div class="d-flex">
+    {{#renderRadioGender}}
+            {{product}}
+    {{/renderRadioGender}}
+</div>
+
+<p>Là sản phẩm đặc biệt</p>
+
+<div class="d-flex">
+
+     {{#renderRadioSpecical}}
+            {{product}}
+    {{/renderRadioSpecical}}
+    
+    
+</div>
+<p>Là sản cần đặt trước</p>
+
+<div class="d-flex">
+
+     {{#renderRadioPreOrder}}
+            {{product}}
+    {{/renderRadioPreOrder}}
+    
+    
+</div>
+
+  <div class="form-group">
+    <label for="productSize">Nhập size sản phẩm</label>
+    <input  type="text"  class="form-control" id="productSize" name='productSize' placeholder="Sử dụng khoảng trống giữa các size VD: 35 36 37" value='{{listSize}}' required>
+  </div>
+
+
+  
+  <div class="form-group">
+    <label for="files">Nhập ảnh/ video(Không bắt buộc):</label>
+      <input type="file" name="file" id="files" multiple class='form-control' > 
+
+  </div>
+  <div class="form-group">
+    <div class="d-flex">
+        <div class="row">
+            {{#each product.productImg}}
+              <div class="col-3 col-sm-6 col-md-2 col-lg-1">
+                  <img src="{{this}}" alt="{{product.productName}}">
+              </div>
+
+              {{/each}}
+        </div>
+      
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label for="weight">Cân nặng</label>
+      <input type="number" name="weight" id="weight" class='form-control' value = "{{product.weight}}"required>
+  </div>
+  <div class="form-group">
+    <label for="quantitySold:">Lượng bán</label>
+      <input type="text" name="quantitySold" id="quantitySold" class='form-control' value = "{{product.quantitySold}}" required>
+  </div>
+
+  <div class="form-group">
+    <label for="form-select-brand">Thương hiệu</label>
+
+    <select class="form-select-brand" aria-label="Default select example">
+                {{#checkIsTheSameValue }}
+                    {{brandList}}
+                {{/checkIsTheSameValue }}
+    </select>
+  </div>
+  
+  
+
+  <button type="submit" class="btn btn-primary">Sửa sản phẩm</button>
+  <button type="button" class="btn btn-secondary back-to-product-list-page">Quay lại</button>
+</form>
+
+{{!-- Check giá sau khi nhập phần trăm giảm giá --}}
+<script>
+      const productPriceElement = document.querySelector('#productPrice');
+      const priceSaleElement = document.querySelector('.priceSale');
+      const priceAfterSaleInputElement = document.querySelector('#priceAfterSale');
+      const saleElement = document.querySelector('#sale');
+
+      const updateSalePercentElement = document.querySelector('.updateSalePercent');
+      const updateOriginPriceElement = document.querySelector('.updateOriginPrice ');
+      const updateSalePriceElement = document.querySelector('.updateSalePrice ')
+
+      function updateSalePrice () {
+          const salePrice = Number(productPriceElement.value) - (Number(productPriceElement.value) * saleElement.value ) / 100;
+          console.log("🚀 ~ file: addproduct.hbs:114 ~ saleElement.addEventListener ~ salePrice:", salePrice)
+          
+          priceAfterSaleInputElement.value = salePrice;
+      }
+
+      function updateOriginPrice () {
+          const originPrice = Number(priceAfterSaleInputElement.value)/(1-(Number(saleElement.value)/100))
+          console.log("🚀 ~ file: editproduct.hbs:139 ~ updateOriginPrice ~ originPrice:", Number(saleElement.value))
+
+          productPriceElement.value = originPrice;
+      }
+
+
+      function updateSalePercent () {
+            const salePercent = ((Number(productPriceElement.value)-Number(priceAfterSaleInputElement.value))/Number(productPriceElement.value)) * 100;
+
+            saleElement.value = salePercent;
+      }
+
+   
+
+      updateOriginPriceElement.addEventListener('click',function(e) {
+          e.preventDefault();
+          updateOriginPrice()
+
+      })
+
+  
+
+      updateSalePercentElement.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          updateSalePercent()
+      })
+
+
+      updateSalePriceElement.addEventListener('click', function(e) {
+          e.preventDefault();
+          updateSalePrice();
+      })
+
+
+
+      
+
+</script>
+
+<script>
+
+
+const id = document.getElementById('id').value;
+
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    
+    e.preventDefault();
+    // Prevents HTML handling submission
+    const productGender = document.querySelector('input[name="productGender"]:checked')?.value || 'Unisex';
+    const isSpecial = document.querySelector('input[name="isSpecial"]:checked')?.value;
+    const isPreOrder = document.querySelector('input[name="isPreOrder"]:checked')?.value;
+    const productName = document.querySelector('input[name="productName"]');
+    const productPrice = document.querySelector('input[name="productPrice"]');
+    const productDescription = document.querySelector('textarea[name="productDescription"]');
+    const sale = document.querySelector('input[name="sale"]');
+    const productColor = document.querySelector('input[name="productColor"]');
+    const productSize = document.querySelector('input[name="productSize"]');
+    const files = document.getElementById("files");
+    const brand = document.querySelector('.form-select-brand');
+
+    const weight = document.querySelector('input[name="weight"]');
+    const quantitySold = document.querySelector('input[name="quantitySold"]');
+    console.log("🚀 ~ file: editproduct.hbs:111 ~ form.addEventListener ~ quantitySold:", quantitySold.value)
+
+    
+    const formData = new FormData();
+     
+    formData.append('productGender',productGender);
+    formData.append('isSpecial',isSpecial);
+    formData.append('isPreOrder',isPreOrder);
+    formData.append('productName',productName.value);
+    formData.append('productPrice',productPrice.value);
+    formData.append('productDescription',productDescription.value);
+    formData.append('sale',sale.value);
+    formData.append('productColor',productColor.value);
+    formData.append('productSize',productSize.value);
+    formData.append('brand',brand.value);
+    formData.append('weight',weight.value);
+    formData.append('quantitySold',quantitySold.value);
+
+
+
+    // Creates empty formData object
+
+    // Appends value of text input
+    for(let i =0; i < files.files.length; i++) {
+        formData.append("files", files.files[i]);
+    }
+
+
+    // Appends value(s) of file input
+    // Post data to Node and Express server:
+    const token = JSON.parse(sessionStorage.getItem('admin-token'));
+
+    // Check have file , if not have file don't delete old file
+    let haveFile = false;
+    
+    for (var i = 0 ; i < files.files.length ; i ++){
+      if(files.files[i].size > 0)
+      {
+            haveFile = true;
+      }
+      else {
+           haveFile = false;
+      }
+  
+    }
+
+    
+    fetch(`/admin/edit-product/${id}/${token}/${haveFile}`, {
+        method: 'POST',
+        body: formData, // Payload is formData object
+    })
+    .then(res => res.json())
+    .then(data => 
+    {
+      if(data.isSuccess) {
+        window.location = window.location.hostname;
+      }
+    });
+})
+</script>
+
+<script>
+   const admintoken= JSON.parse(sessionStorage.getItem('admin-token'));
+    document.querySelector('.back-to-product-list-page').addEventListener('click', function(e){
+      window.location.href=`/admin/products/${admintoken}`
+    })
+</script>
+
+{{>admin-footer}}
+
+

@@ -1,0 +1,331 @@
+
+{{>admin-header}}
+<form>
+  <div class="form-group">
+    <label for="productName">Tên sản phẩm</label>
+    <input type="text" class="form-control" id="productName" name='productName' placeholder="Vui lòng nhập" required>
+  </div>
+
+  <div class="form-group">
+    <label for="productPrice">Giá sản phẩm</label>
+    <input type="text" class="form-control" id="productPrice" name='productPrice'  placeholder="Vui lòng nhập" value='{{product.productPrice}}' required>
+     {{!-- <div class='updateSalePrice btn btn-primary'>Cập nhật giá sau khi sale</d> --}}
+  </div>
+
+  {{!-- <div class="form-group">
+    <label for="sale">Giảm giá bao nhiêu phần trăm</label>
+    <p class='priceSale'></p>
+    <input type="text" class="form-control" id="sale" name='sale' placeholder="Phần trăm giảm giá" min='0' max='100' required value='{{product.sale}}'>
+    <div class='updateSalePercent btn btn-primary'>Cập % giảm giá theo giá gốc và giá đã sale</d>
+  </div> --}}
+
+  {{!-- Chỉ ở client --}}
+  {{!-- <div class="form-group">
+    <label for="sale">Giá Sau Khi Sale</label>
+    <input type="number" class="form-control" id="priceAfterSale" name='priceAfterSale' placeholder="Giá sau khi giảm">
+      <div class='updateOriginPrice btn btn-primary'>Cập nhật giá gốc</div>
+  </div> --}}
+  
+
+  
+  
+
+  
+
+   {{!-- <div class="form-group">
+    <label for="productColor">Màu sắc</label>
+    <input type="text" class="form-control" id="productColor" name='productColor' placeholder="Vui lòng nhập" required>
+  </div> --}}
+
+{{!-- <p>Giới tính</p>
+<div class="d-flex">
+    <div class="form-group p-3">
+        <label for="productGenderMale">Nam</label>
+        <input type="radio" class="form-control" id="productGenderMale" name='productGender' placeholder="Màu sắc" value='Male' required>
+    </div>
+    <div class="form-group p-3">
+        <label for="productGenderFemale">Nữ</label>
+        <input type="radio" class="form-control" id="productGenderFemale" name='productGender' placeholder="Màu sắc" value='Female'>
+    </div>
+    <div class="form-group p-3">
+        <label for="productGenderUnisex">Unisex</label>
+        <input type="radio" class="form-control" id="productGenderUnisex" name='productGender' placeholder="Màu sắc" value='Unisex'>
+    </div>
+</div> --}}
+
+<p>Là sản phẩm đặc biệt</p>
+
+<div class="d-flex">
+    <div class="form-group p-3">
+        <label for="specialIsTrue">Có</label>
+        <input type="radio" class="form-control" id="specialIsTrue" name='isSpecial'  value='true' required>
+    </div>
+    <div class="form-group p-3">
+        <label for="specialIsFalse">Không</label>
+        <input type="radio" class="form-control" id="specialIsFalse" name='isSpecial'  value='false'>
+    </div>
+    
+</div>
+
+<p>Sản phẩm cần Order trước ?</p>
+
+<div class="d-flex">
+    <div class="form-group p-3">
+        <label for="preOrderIsTrue">Có</label>
+        <input type="radio" class="form-control" id="preOrderIsTrue" name='isPreOrder'  value='true' required>
+    </div>
+    <div class="form-group p-3">
+        <label for="preOrderIsFalse">Không</label>
+        <input type="radio" class="form-control" id="preOrderIsFalse" name='isPreOrder'  value='false'>
+    </div>
+    
+</div>
+
+
+
+  {{!-- <div class="form-group">
+    <label for="productSize">Nhập size sản phẩm</label>
+    <input  type="text"  class="form-control" id="productSize" name='productSize' placeholder="Sử dụng khoảng trống giữa các size VD: 35 36 37" value='36 37 38 39 40 41 42 43' required>
+  </div> --}}
+
+
+  
+  <div class="form-group">
+    <label for="files">Nhập ảnh/ video(Không bắt buộc):</label>
+      <input type="file" name="file" id="files" multiple class='form-control' required> 
+
+  </div>
+  <div class="form-group">
+    <label for="weight">Cân nặng</label>
+      <input type="number" name="weight" id="weight" class='form-control' required>
+  </div>
+  <div class="form-group">
+    <label for="quantitySold:">Lượng bán</label>
+      <input type="text" name="quantitySold" id="quantitySold" class='form-control' required>
+  </div>
+
+  {{!-- gaigoi --}}
+  <div class="form-group">
+    <label for="productPhoneNumber:">Số điện thoại</label>
+      <input type="text" name="productPhoneNumber" id="productPhoneNumber" class='form-control' required>
+  </div>
+  <div class="form-group">
+    <label for="yearsOfBirth:">Năm sinh</label>
+      <input type="text" name="yearsOfBirth" id="yearsOfBirth" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="height:">Chiều cao</label>
+     <input type="number" name="height" id="height" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="threeRingMeasurements:">Số đo 3 vòng</label>
+      <input type="text" name="threeRingMeasurements" id="threeRingMeasurements" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="orgin:">Xuất sứ</label>
+      <input type="text" name="orgin" id="orgin" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="position:">Vị trí</label>
+      <input type="text" name="position" id="position" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="adress:">Địa chỉ</label>
+      <input type="text" name="adress" id="adress" class='form-control' required>
+  </div>
+  
+  <div class="form-group">
+    <label for="workingTime:">Thời gian làm việc</label>
+      <input type="text" name="workingTime" id="workingTime" class='form-control' required>
+  </div>
+  
+  <div class="form-group">
+    <label for="services:"></label>
+      <input type="text" name="services" id="services" class='form-control' required>
+  </div>
+  
+
+  <div class="form-group">
+    <label for="form-select-brand">Xuất sứ</label>
+
+    <select class="form-select-brand" aria-label="Default select example">
+        
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="productDescription">Mô tả sản phẩm</label>
+    <textarea  type="text"  class="form-control" id="productDescription" name='productDescription' placeholder="Mỗi mô tả một dòng" rows="10" cols="50" required></textarea>
+  </div>
+  
+  
+
+  <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+</form>
+{{!-- Show brand --}}
+<script>
+  const formSelectBrand = document.querySelector('.form-select-brand');
+   fetch(`/apis/brand-list`, {
+        method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data =>  {
+        const html = data.map(el => {
+          return `<option value="${el.brandName}">${el.brandName}</option>`
+        });
+        formSelectBrand.innerHTML = html.join('');
+    });
+</script>
+
+{{!-- <script>
+      const productPriceElement = document.querySelector('#productPrice');
+      const priceSaleElement = document.querySelector('.priceSale');
+      const priceAfterSaleInputElement = document.querySelector('#priceAfterSale');
+      const saleElement = document.querySelector('#sale');
+
+      const updateSalePercentElement = document.querySelector('.updateSalePercent');
+      const updateOriginPriceElement = document.querySelector('.updateOriginPrice ');
+      const updateSalePriceElement = document.querySelector('.updateSalePrice ')
+
+      function updateSalePrice () {
+          const salePrice = Number(productPriceElement.value) - (Number(productPriceElement.value) * saleElement.value ) / 100;
+          console.log("🚀 ~ file: addproduct.hbs:114 ~ saleElement.addEventListener ~ salePrice:", salePrice)
+          
+          priceAfterSaleInputElement.value = salePrice;
+      }
+
+      function updateOriginPrice () {
+          const originPrice = Number(priceAfterSaleInputElement.value)/(1-(Number(saleElement.value)/100))
+          console.log("🚀 ~ file: editproduct.hbs:139 ~ updateOriginPrice ~ originPrice:", Number(saleElement.value))
+
+          productPriceElement.value = originPrice;
+      }
+
+
+      function updateSalePercent () {
+            const salePercent = ((Number(productPriceElement.value)-Number(priceAfterSaleInputElement.value))/Number(productPriceElement.value)) * 100;
+
+            saleElement.value = salePercent;
+      }
+
+   
+
+      updateOriginPriceElement.addEventListener('click',function(e) {
+          e.preventDefault();
+          updateOriginPrice()
+
+      })
+
+  
+
+      updateSalePercentElement.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          updateSalePercent()
+      })
+
+
+      updateSalePriceElement.addEventListener('click', function(e) {
+          e.preventDefault();
+          updateSalePrice();
+      })
+
+
+
+      
+
+</script> --}}
+
+
+<script>
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    
+    e.preventDefault();
+    // Prevents HTML handling submission
+    const productGender = document.querySelector('input[name="productGender"]:checked')?.value || 'Unisex';
+    const isSpecial = document.querySelector('input[name="isSpecial"]:checked')?.value;
+    const isPreOrder = document.querySelector('input[name="isPreOrder"]:checked')?.value;
+    const productName = document.querySelector('input[name="productName"]');
+    const productPrice = document.querySelector('input[name="productPrice"]');
+    const productDescription = document.querySelector('textarea[name="productDescription"]');
+    const sale = document.querySelector('input[name="sale"]');
+    const productColor = document.querySelector('input[name="productColor"]');
+    const productSize = document.querySelector('input[name="productSize"]');
+    const files = document.getElementById("files");
+    const brand = document.querySelector('.form-select-brand');
+    const weight = document.querySelector('input[name="weight"]');
+    const quantitySold = document.querySelector('input[name="quantitySold"]');
+
+    //gaigoi
+    const productPhoneNumber = document.querySelector('input[name="productPhoneNumber"]');
+    const yearsOfBirth = document.querySelector('input[name="yearsOfBirth"]');
+    const height = document.querySelector('input[name="height"]');
+    const threeRingMeasurements = document.querySelector('input[name="threeRingMeasurements"]');
+    const orgin = document.querySelector('input[name="orgin"]');
+    const position = document.querySelector('input[name="position"]');
+    const adress = document.querySelector('input[name="adress"]');
+    const workingTime = document.querySelector('input[name="workingTime"]');
+    const services = document.querySelector('input[name="services"]');
+
+
+
+
+    const formData = new FormData();
+     
+    formData.append('productGender',productGender);
+    formData.append('isSpecial',isSpecial);
+    formData.append('isPreOrder',isPreOrder);
+    formData.append('productName',productName.value);
+    formData.append('productPrice',productPrice.value);
+    formData.append('productDescription',productDescription.value);
+    // formData.append('sale',sale.value);
+    //formData.append('productColor',productColor.value);
+    //formData.append('productSize',productSize.value);
+    formData.append('brand',brand.value);
+    formData.append('weight',weight.value);
+    formData.append('quantitySold',quantitySold.value);
+
+    //gaigoi
+     formData.append('productPhoneNumber',productPhoneNumber.value);
+     formData.append('yearsOfBirth',yearsOfBirth.value);
+     formData.append('height',height.value);
+     formData.append('threeRingMeasurements',threeRingMeasurements.value);
+     formData.append('orgin',orgin.value);
+     formData.append('position',position.value);
+     formData.append('adress',adress.value);
+     formData.append('workingTime',workingTime.value);
+     formData.append('services',services.value);
+     
+
+
+
+    // Creates empty formData object
+
+    // Appends value of text input
+    for(let i =0; i < files.files.length; i++) {
+        formData.append("files", files.files[i]);
+    }
+
+
+    // Appends value(s) of file input
+    // Post data to Node and Express server:
+    const token = JSON.parse(sessionStorage.getItem('admin-token'));
+
+    fetch(`/admin/them-san-pham/${token}`, {
+        method: 'POST',
+        body: formData, // Payload is formData object
+    })
+    .then(res => res.json())
+    .then(data => console.log(data));
+})
+</script>
+
+{{>admin-footer}}
+
+

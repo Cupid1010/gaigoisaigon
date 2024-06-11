@@ -1,0 +1,676 @@
+<div class="order">
+			<h1 class='text-uppercase my-3'>Thanh toán</h1>
+	<div class="mt-5">
+			<div class="order__deco">
+
+			</div>
+			<div class="order__content">
+					<div class="order__container">
+						<p class="order__title">
+							<i class="order__title--icon fa-solid fa-location-dot"></i>Địa chỉ nhận hàng
+						</p>
+						<div>
+							<div class="order__user">
+								<span class="order__user--name font-weight-bold">--</span>
+								<p>
+										<span class='font-weight-bold'>(+84)</span> <span class="order__user--phone font-weight-bold">--</span>
+
+								</p>
+								
+								<span class="order__user--address">----------------------</span>
+
+								<button class='text-orange' data-target="#modalUserInfor" data-toggle="modal">Thay đổi</button>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="order__container">
+						<p class="order__title">
+							<i class="order__title--icon fa-solid fa-box-open"></i>Sản phẩm
+
+						</p>
+						<div class="cart__list">
+
+							<div class="cart__table">
+									<div class="cart__row cart__header--row">
+											<div></div>
+											<div></div>
+											<div>Đơn giá</div>
+											<div>Số lượng</div>
+											<div>Thành tiền</div>
+									</div>
+									<div class="cart__body">
+										<div class="cart__row cart__body--row">
+											
+										</div>
+									</div>
+							</div>
+
+							
+						</div>
+						<div class="cart__body">
+							<div class='cart__body--bottom row'>
+									<div class="cart__body--note col-12 col-md-6">
+										<textarea id="note" name="note" rows="5" cols="10" placeholder="Ghi chú"></textarea>
+									</div>
+
+									<div class='col-12 col-md-6'>
+											<div class="d-flex justify-content-between align-items-center my-3">
+												<span class=''>Đơn vị vận chuyển</span> 
+												<p class='font-weight-bold text-green'>Giao hàng tiết kiệm</p>
+											</div>
+
+											<div class="d-flex justify-content-between align-items-center my-3">
+												<span class=''>Phí bảo hành</span> <span class='insurance__fee'>----</span>
+											</div>
+
+
+											<div class="d-flex justify-content-between">
+												
+
+												<span >Phí vận chuyển</span>
+												<span class='ship__fee'>----</span>
+
+
+												
+											</div>
+
+											<div class="d-flex justify-content-end align-items-center my-4">
+												<span class='font-weight-bold'> Phí Ship: </span> <span class='total__ship--fee'></span>
+											</div>
+									</div>
+
+								
+								</div>
+						</div>
+					</div>
+					<div class="order__container">
+						<p class="order__title">
+							<i class="order__title--icon fa-brands fa-cc-amazon-pay"></i>Phương thức thanh toán
+
+						</p>
+						<div class="order__pay--option">
+								 <div class="tabs">
+									<div class="tab__item active">
+										<i class="tab-icon fa-solid fa-money-bill"></i>
+										
+										Thanh toán khi giao hàng (COD)
+										<span class="tab__item--checked">
+											<i class="tab__item--checked-icon fa-solid fa-check"></i>
+										</span>
+									</div>
+
+									<div class="tab__item">
+										<i class="tab-icon fa-solid fa-credit-card"></i>
+										Chuyển khoản qua ngân hàng
+										<span class="tab__item--checked">
+											<i class="tab__item--checked-icon fa-solid fa-check"></i>
+										</span>
+										
+										
+									</div>
+									<div class="tab__item">
+										<i class="tab-icon fas fa-plus-circle"></i>
+										Ví điện tử : Momo
+										<span class="tab__item--checked">
+											<i class="tab__item--checked-icon fa-solid fa-check"></i>
+										</span>
+										
+										
+									</div>
+							
+									<div class="line"></div>
+								</div>
+
+
+								<div class="contents">
+									<div class="tab__content active">
+									<p>
+										Thanh toán khi giao hàng (COD), quý khách sẽ thanh toán <span class='font-weight-bold'>khi</span> shipper <span class='font-weight-bold'>giao hàng</span> đến địa chỉ khách yêu cầu
+									</p>
+									</div>
+									<div class="tab__content">
+										<p>
+											Khách hàng Thanh toán qua Ngân hàng Vui lòng chuyển khoản theo thông tin sau:
+										</p>
+    									{{>payment-bank}}
+										
+									</div>
+
+									<div class="tab__content">
+									
+    									{{>payment-momo}}
+										
+									</div>
+							
+								</div>
+						</div>
+						<div class="order__pay--discount py-5">
+
+							{{!-- <div>
+								<input type="text" id='discount__input'>
+								<button  type="submit" id='discount__submit'>
+									Sử dụng
+								</button>
+							</div>  --}}
+
+							<div>
+								<div class="container my-1">
+									<p class="order__title">
+										<i class="order__title--icon fa-solid fa-code"></i>Áp dụng giảm giá
+									</p>
+									<div class="discount__list row">
+									
+										
+									</div>
+								</div>
+							</div>
+								
+						</div>
+
+						<div class="order__pay--summary">
+						
+							<div class='order__pay--whiteSpace'></div>
+							<div class="order__pay--summary--title">
+								Tổng tiền hàng
+							</div>
+							<div class="total__product--price">
+								 0 vnd
+							</div>
+
+
+							<div class='order__pay--whiteSpace'></div>
+							<div class="order__pay--summary--title">
+								Phí vận chuyển 
+							</div>
+							<div class="total__feeShip--price">
+								 0 vnd
+							</div>
+						
+
+
+							<div class='order__pay--whiteSpace'></div>
+							<div class='discoust--show'></div>
+							<div class='originalTotalPrice'></div>
+							<div></div>
+
+							<div class="order__pay--summary--title font-weight-bold">
+								Tổng Thanh Toán 
+							</div>
+							<div class="total__order--price">
+								 0 vnd
+							</div>
+						</div>
+						<div class="order__pay--bottom">
+							<p class="text-gray">
+								Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo <a href="#" class='font-weight-bold'>Điều khoản</a>
+							</p>
+
+							<span>
+								{{> slideBtn disabled='disabled' title="Đặt hàng" class="order__btn"}}
+
+							</span>
+						</div>
+						
+					</div>
+			</div>
+	</div>
+{{>modalUserInfor}}
+</div>
+
+
+
+<script>
+
+
+	 try {
+			const userInfor = JSON.parse(localStorage.getItem('userInfor'));
+			const {name,phone,email,address} = userInfor;
+			function renderUserInfor () {
+					document.querySelector('.order__user--name').textContent = name;
+					document.querySelector('.order__user--phone').textContent = phone;
+					document.querySelector('.order__user--address').textContent = `${address.detailAddress}, ${address.ward}, ${address.district}, ${address.provinces}`;
+
+			}
+
+			renderUserInfor();
+
+	 }catch(err) {
+		console.log(err);
+	 }
+
+
+
+</script>
+
+
+
+
+<script>
+	// RENDER PRODUCT
+	function numberToMoney (price) {
+			const stringPrice = `${price}`;
+		return stringPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + '<span class="vnd px-2">đ </span>';
+		}
+
+	let totalPrice = 0;
+	let productPrice = 0;
+	let shipmentFee = 0;
+	let isShipmentFeeRes = false;
+
+
+
+	const cartBodyElement = document.querySelector('.cart__body');
+	 try {
+		const cartProductList = JSON.parse(localStorage.getItem('cartProductList'));
+
+		const cartBodyHTML = cartProductList.map((item)=> {
+				return `<div class="cart__row cart__body--row">
+											<div class="cart__item--main">
+												<div>
+													<img src="${item.cartItemImgUrl}" alt="">
+												</div>
+
+												<div>
+													<p>${item.cartItemName}</p>
+												</div>
+											
+
+												
+											</div>
+
+											<div class="cart__item--type">
+												<div>
+													Màu: <span class="cart__item--color">${item.cartItemColor}</span>
+												</div>
+												
+												<div>
+													Size: <span class="cart__item--size">${item.cartItemSize}</span>
+												</div>
+
+												
+											</div>
+
+											<div>${item.cartItemPriceString}</div>
+											<div>${item.cartItemAmount}</div>
+											<div>${numberToMoney(item.cartItemPrice*item.cartItemAmount)}</div>
+										</div>`
+		})
+
+	cartBodyElement.innerHTML = cartBodyHTML.join('')
+
+	 }catch(err) {
+		console.log(err);
+	 }
+
+
+
+	 try {
+		const userInfor = JSON.parse(localStorage.getItem("userInfor"));
+	    const cartProductList = JSON.parse(localStorage.getItem('cartProductList'));
+
+		const cartProductId = cartProductList.map((item)=> 
+		{
+			return {id:item.cartItemId,amount:item.cartItemAmount };
+		})
+
+		async function getData(url , data = {}) {
+
+
+				 const res = await fetch(url, {
+					method: 'POST', 
+					mode: 'cors', 
+					cache: 'no-cache', 
+					credentials: 'same-origin', 
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					redirect: 'follow', 
+					referrerPolicy: 'no-referrer', 
+					body :JSON.stringify(data)
+				})
+
+				return res;
+			}
+
+	 
+		
+getData('/apis/calculate-ship-price',{address:userInfor.address,cartProductId})
+			.then((res) => {
+				return res.json()
+			}).then( async data => {
+
+				const {fee,insurance_fee,ship_fee_only} = data.fee;
+				console.log(data)
+				const orderWeight = data.orderWeight / 1000;
+
+				const totalPriceFromFetch =await getTotalPrice();
+			
+			
+				document.querySelector('.total__ship--fee').innerHTML = `${numberToMoney(fee)} <span class='total-weight'>(${orderWeight}kg)</span>`;
+				document.querySelector('.insurance__fee').innerHTML = numberToMoney(insurance_fee);
+				document.querySelector('.ship__fee').innerHTML = numberToMoney(ship_fee_only);
+
+				document.querySelector('.total__product--price').innerHTML = numberToMoney(totalPriceFromFetch);
+
+				
+
+				document.querySelector('.total__feeShip--price').innerHTML = numberToMoney(fee);
+				document.querySelector('.total__order--price').innerHTML = numberToMoney(fee + totalPriceFromFetch) ;
+				document.querySelector('.originalTotalPrice').innerHTML = numberToMoney(fee + totalPriceFromFetch) ;
+
+				totalPrice = fee + totalPriceFromFetch;
+				productPrice = totalPriceFromFetch;
+				shipmentFee = fee;
+				isShipmentFeeRes = true;
+
+
+				const orderBtnDisabled = document.querySelector('.btn-container.disabled');
+				orderBtnDisabled.classList.remove('disabled');
+				
+
+				const btn = orderBtnDisabled.querySelector('button');
+				btn.removeAttribute('disabled');
+				if(productPrice ===0 ) {
+							orderBtnDisabled.classList.add('disabled');
+
+						btn.setAttribute('disabled',"");
+				}
+			
+			}) 
+	 
+	 
+
+	 }catch (err) {
+		console.log(err)
+	 }
+
+			
+</script>
+
+
+
+<script>
+	// tabs click
+
+var items = document.querySelectorAll('.tab__item');
+var contents = document.querySelectorAll('.tab__content');
+
+var line = document.querySelector('.line');
+line.style.width = items[0].clientWidth + 'px';
+
+items.forEach(function (tab, index) {
+  var content = contents[index];
+  tab.onclick = function (e) {
+    line.style.width = this.offsetWidth + 'px';
+    line.style.left = this.offsetLeft + 'px';
+
+    document.querySelector('.tab__item.active').classList.remove('active');
+    document.querySelector('.tab__content.active').classList.remove('active');
+
+    tab.classList.add('active');
+    content.classList.add('active');
+  };
+});
+
+</script>
+
+
+<script>
+	// RENDER DISCOUNT
+
+				const cartProductList = JSON.parse(localStorage.getItem('cartProductList')) || [];
+				const totalPriceForLoadDiscount = cartProductList.reduce((total,curr,index)=> {
+									return total+ (curr.cartItemPrice * curr.cartItemAmount)  ;
+								},0)
+
+			
+				fetch(`/discount/discount-list?total=${totalPriceForLoadDiscount}`).then(res=> res.json()).then((data)=> {
+								const {discountList} = data
+								const discountHTML = discountList.map((discount)=> {
+return `	<div class="col-12 col-lg-4 col-md-6">
+				<div class="coupon bg-white rounded mb-5 d-flex justify-content-between">
+																		
+														
+																								<div class="tengah py-3 d-flex w-100 justify-content-start">
+																									<div>
+																										<span class="discount__number badge badge-success">${							discount.discountName}</span>
+																										<h3 class="lead">Điều kiện</h3>
+																										<p class="text-muted mb-0">${discount.conditionText}</p>
+																									</div>
+																								</div>
+																								<div class="kanan">
+																									<div class="info m-3 d-flex align-items-center">
+																										<div class="w-100">
+																											<div class="block">
+																												<span class="time font-weight-light">
+																													<span>19 days</span>
+																												</span>
+																											</div>
+																											<button class="btn btn-lg btn-outline-success btn-block use-discount-btn"
+																											data-discountId = ${discount._id} data-discountType = ${discount.type}>
+																												
+																												Sử dụng
+																											</button>
+																										</div>
+					</div>
+				</div>
+			</div>
+		</div>`
+								});
+								document.querySelector('.discount__list').innerHTML = discountHTML.join("")
+							
+								
+							}).then(()=> {
+								const useDiscountBtn = document.querySelectorAll('.use-discount-btn');
+								
+
+						
+								useDiscountBtn.forEach((item)=> {
+									item.addEventListener('click',(e)=> {
+										const id = item.dataset.discountid;
+
+										document.querySelector('.originalTotalPrice').style.textDecoration = 'line-through';
+										
+
+										if(isShipmentFeeRes) {
+											fetch('/discount/get-discount', {
+												method: 'POST',
+												headers: {
+													'Accept': 'application/json',
+													'Content-Type': 'application/json'
+												},
+												body: JSON.stringify(
+													{ 
+														"id": id,
+														"shipmentFee": shipmentFee,
+														"totalPrice":totalPrice,
+														productPrice
+													}
+												)
+											})
+											.then(response => response.json())
+											.then(response => {
+												e.target.disabled = true;
+
+												const {priceWithDiscount} = response
+
+												const {decrease,type,unit,currentPrice,newFee,discountName,message} = priceWithDiscount;
+
+												if(message) {
+													alert(message);
+													return ;
+												}
+												
+
+												function changePriceView(shipmentFee,productPrice,type) {
+													const totalPriceElement = document.querySelector('.total__order--price');
+
+													const totaFeeShipElement = document.querySelector('.total__feeShip--price');
+
+													const productPriceElement = document.querySelector('.total__product--price');
+
+													totaFeeShipElement.innerHTML = numberToMoney(shipmentFee);
+
+													productPriceElement.innerHTML = numberToMoney(productPrice);
+
+													totalPriceElement.innerHTML = numberToMoney(shipmentFee + productPrice);
+
+													const listUseDiscoutBtn = document.querySelectorAll('.use-discount-btn');
+
+													listUseDiscoutBtn.forEach((item)=> {
+														if(item.dataset.discounttype === type ) {
+															console.log("có")
+															item.disabled = true;
+														}
+													})
+
+												} 
+
+												function loadDiscountSelected(id) 
+												
+												{
+
+
+													const discountCode = JSON.parse(localStorage.getItem("discountCode")) || [];
+
+													let isSaved = false; 
+
+													discountCode.forEach((item)=> {
+														if(item.id === id)  {
+															isSaved = true;
+														}
+													});
+
+													if(!isSaved) {
+															localStorage.setItem('discountCode',JSON.stringify([...discountCode,{id,discountName}]));
+													}
+
+													
+													
+																	
+													
+
+													const newDiscountCode = JSON.parse(localStorage.getItem("discountCode")) || [];
+
+													const discountShowElement = document.querySelector('.discoust--show');
+
+													const discountShowHTML = newDiscountCode.map((item)=> {
+														return `<span class="discount__number badge badge-success">${item.discountName}</span>`
+													})
+
+													discountShowElement.innerHTML = discountShowHTML.join('');
+
+
+
+												}
+
+
+												
+											
+
+												if(type=='price') {
+								
+													productPrice = newFee;
+													changePriceView(shipmentFee,productPrice,type);
+
+													loadDiscountSelected(id);
+													
+												}
+												else if(type=='ship') {
+													shipmentFee = newFee;
+													changePriceView(shipmentFee,productPrice,type);
+													
+													loadDiscountSelected(id);
+
+												}
+
+
+											})
+										}
+									})
+									
+								})
+						})
+								
+								
+</script>
+
+
+<script>
+	const orderBtn = document.querySelector('#order__btn');
+
+	orderBtn.addEventListener("click",async (e)=> {
+
+		try {
+			const userInfor = JSON.parse(localStorage.getItem("userInfor"));
+			const productInfor = JSON.parse(localStorage.getItem("cartProductList"));
+			
+
+			const discountCodeList = JSON.parse(localStorage.getItem("discountCode"))|| [] ;
+			const discountCode=discountCodeList.map((item)=> item.id) ;
+
+			const shipmentFee = document.querySelector('.total__feeShip--price').innerHTML;
+			
+
+			const totalPriceFromFetch =await getTotalPrice();
+
+
+			const orderPayOption = document.querySelector('.order__pay--option .tab__item.active').innerText.trim();
+
+			const note = document.querySelector('#note').value;
+			
+			const orderData = {
+				userInfor,
+				productInfor,
+				orderPayOption,
+				discountCode,
+				note,
+				totalPriceFromClient:totalPriceFromFetch 
+
+			}
+
+
+			function order (orderData) {
+				fetch('/order/handle-order', {
+					method: 'POST',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(orderData)
+				})
+				.then(response => response.json())
+				.then((response) => {
+				console.log("🚀 ~ file: checkouts.hbs:646 ~ .then ~ response:", response)
+
+						alert(response.message);
+						if(!response.isError) {
+							window.location.pathname='/home';
+							localStorage.setItem('cartProductList',"[]") 
+							localStorage.setItem('discountCode',"[]")
+						    localStorage.setItem('orderId',response.orderId)
+						}
+
+				})
+			}
+			order(orderData);
+
+
+		}
+		catch(err) {
+		console.log(err);
+		alert("Có lỗi , vui lòng thử lại");
+
+		}
+	
+	})
+
+</script>
+
+<script>
+	
+
+
+</script>

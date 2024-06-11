@@ -1,0 +1,255 @@
+<div class='header'>
+  <div class="container container-main">
+
+
+
+  <div class='header__main'>
+    <div class="container">
+            <div class="header-container">
+              <div class="header-logo">
+                  <a href='/' class='header__logo-link'>
+                  <img
+                    class='header__logo-img'
+                    src='/img/header__logo.png'
+                    alt='header__logo'
+                  />
+                </a>
+              </div>
+
+              <div class="header-right">
+
+                 
+
+                  <div class="menu-toggle hiddenOnPc">
+                    <span></span><span></span><span></span>
+                  </div>
+              
+                  <div class="menu--wrapper">
+                      <div class="menu--overlay">
+
+                      </div>
+                      <ul class="menu">
+                            <li class='menuCloseBtn'>
+                              <i class="fa-solid fa-xmark"></i>
+                            </li>
+                            <li class='header__navigation-item nav--level1__brand'>
+                      <a href='/collections/tat-ca-san-pham' class='header__navigation-link'>Gái gọi </a>
+                      
+                      <i class="fa-solid fa-angle-down brand-show-icon"></i>
+                      <div class=''>
+                        <div class='row nav--level2__brand'>
+                          <div class='col-md-4 brand__menu'>
+                            <ul class='brand-menu__list row'>
+                              
+                            </ul>
+                          </div>
+
+                          <div class='col-md-8 brand__imglink'>
+                            <div class='row'>
+                              <div class='col-md-6'>
+                                <a href='#'>
+                                  <img
+                                    class='brand-img'
+                                    src='/img/brand_menu__img/menu_img_1_2.jpg'
+                                    alt=''
+                                  />
+                                </a>
+                              </div>
+                              <div class='col-md-6'>
+                                <a href='#'>
+                                  <img
+                                    class='brand-img'
+                                    src='/img/brand_menu__img/menu_img_1_1.jpg'
+                                    alt=''
+                                  />
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </li>
+                    
+                    <li class='header__navigation-item'>
+                      <a href='/collections/brand/Miền%20Bắc' class='header__navigation-link'>Miền Bắc</a>
+                    </li>
+                    <li class='header__navigation-item'>
+                      <a href='/collections/brand/Miền%20Tây' class='header__navigation-link'>Miền Tây</a>
+                    </li>
+                    <li class='header__navigation-item'>
+                      <a href='/collections/brand/Miền%20Trung' class='header__navigation-link'>Miền Trung</a>
+                    </li>
+                      </ul>
+                  </div>
+
+                   <div class='header__icon'>
+                      <ul class='header__icon-list'>
+                        <li class='header__icon-item icon_search'>
+                          <a href='#' class='header__icon__link'>
+                            <i class='search-icon fas fa-search-minus'></i>
+                          </a>
+                          <form  class='form__search' action="/search">
+                          <input type="hidden" name='type' value='product'>
+                            <input
+                              type='text'
+                              name='text'
+                              placeholder='Search'
+                              id='search__input'
+                            />
+                            <button type='submit' id='search__submit'>
+                              <i class='search__submit__icon fas fa-search'></i>
+                            </button>
+                          </form>
+                        </li>
+
+
+                              {{!-- <a href='/cart' class='header__icon__link'>
+                                <li class='header__icon-item icon_cart'>
+                                      <i class='cart-icon fas fa-shopping-bag'></i>
+                                      <div class="number">0</div>
+                                </li>
+                              </a> --}}
+
+                      </ul>
+                  </div>
+                </div>
+            </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+const doc = document.querySelector.bind(document);
+const docs = document.querySelectorAll.bind(document);
+
+const iconSearch = doc(".icon_search");
+const formSearch = doc(".form__search");
+const imgsItem = docs(".slider__Img-item");
+const container = doc(".container");
+const controlDot = docs(".control__dot");
+
+const App = {
+  SlideCurrentIndex: 0,
+  handleEvent: function () {
+    // btn Search
+    iconSearch.onclick = function (e) {
+      formSearch.classList.toggle("active");
+    };
+
+    //  Xóa hiện tượng nổi bọt
+    formSearch.onclick = function (e) {
+      e.stopPropagation();
+    };
+
+  },
+  
+
+  start: function () {
+    //   sử lý sự kiện trong DOM
+    this.handleEvent();
+  },
+};
+App.start();
+
+</script>
+
+
+<script>
+    const brandListElement = document.querySelector('.brand-menu__list');
+    fetch('/apis/brand-list')
+    .then((res)=> res.json())
+    .then((data)=> {
+      const listBrandHTML = data.map((item)=> {
+        return ` <li class='brand-menu__item col-md-6'><a
+                            href='/collections/brand/${item.brandName}'
+                            class='brand-menu__link'
+                          >
+                            ${item.brandName}
+                          </a></li>`
+      })
+      brandListElement.innerHTML = listBrandHTML.join('');
+
+    })
+</script>
+
+
+
+{{!-- Toggle header --}}
+<script>
+  
+  (() => {
+    const isShow = 'isShow';
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const menuWrapper = document.querySelector('.menu--wrapper');
+    const menu = document.querySelector('.menu');
+    let menuCloseBtn = document.querySelector('.menuCloseBtn');
+
+    function showMenu(e) {
+      e.stopPropagation();
+      menuWrapper.classList.add(isShow);
+    }
+    function closeMenu() {
+      menuWrapper.classList.remove(isShow);
+    }
+    toggleBtn.addEventListener('click', showMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+
+    window.addEventListener('click', function (e) {
+      if (!menu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+
+{{!-- Header Sticky --}}
+{{!-- <script>
+    
+    const headerTopElement = document.querySelector('.header__top');
+
+    window.addEventListener('scroll', function() {
+        const headerElement = document.querySelector('.header');
+        const heakerElementHeight = headerElement.offsetHeight;
+
+        if(window.scrollY >= (heakerElementHeight * 4 )) {
+            headerElement.classList.add('small')
+        }
+        else {
+
+            headerElement.classList.remove('small');
+
+        }
+    })
+   
+</script> --}}
+
+{{!-- Cập nhật số lượng trong giỏ hàng --}}
+<script>
+  const cartProductListJson = localStorage.getItem('cartProductList');
+  const cartProductListForUpdateCart = JSON.parse(cartProductListJson);
+  const cartNumberElement = document.querySelector('.header__icon-item.icon_cart .number');
+
+  if(cartProductListForUpdateCart.length === 0) {
+      cartNumberElement.style.display = 'none';
+  }
+  else {
+      cartNumberElement.innerHTML = cartProductListForUpdateCart.length;
+  }
+
+</script>
+
+
+<script>
+  const brandShowIcon = document.querySelector('.brand-show-icon');
+  const navLevel2Brand = document.querySelector('.nav--level2__brand');
+  brandShowIcon.addEventListener('click',()=> {
+    navLevel2Brand.classList.toggle('show')
+  })
+</script>
