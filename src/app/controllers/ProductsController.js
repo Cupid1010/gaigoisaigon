@@ -19,7 +19,7 @@ const {makeNumberSorter} = require('../../util/makeNumberSorter')
       const relatedProducts = await ProductModel.find({isAvailable:true});
       console.log("🚀 ~ ProductsController ~ productDetail ~ relatedProducts:", relatedProducts)
       const randomList = [];
-      for(var i =0;i<1;) {
+      for(var i =0;i<6;) {
 
         const rdnumber = Math.floor(Math.random() * relatedProducts.length)
         if(randomList.includes(rdnumber)) {
