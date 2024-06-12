@@ -3,7 +3,7 @@ const axios = require('axios');
 async function keepOnlineRenDerApp() {
     // Hàm gọi API
         async function fetchDataFromAPI() {
-            const apiUrl = 'https://gaigoiducpho.onrender.com';
+            const apiUrl = 'https://gaigoiducpho.com';
 
             try {
             const response = await axios.get(apiUrl);
