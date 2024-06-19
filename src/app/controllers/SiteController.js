@@ -22,7 +22,7 @@ class SiteController {
   
  
     res.render('home',
-    {products:mutipleMongooseToObject(products),pageTitle:`GÁI GỌI ĐỨC PHỔ - ${process.env.DOMAINNAME}`,newestProductAvatar,newestProduct:newestProductObject});
+    {products:mutipleMongooseToObject(products),pageTitle:`GÁI GỌI SÀI GÒN - ${process.env.DOMAINNAME}`,newestProductAvatar,newestProduct:newestProductObject});
   }
 
 
