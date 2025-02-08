@@ -138,9 +138,9 @@ try {
      
       req.body.productDescription = await textAreaSpace(productDescription);
     
-      req.body.productSize = await inputSpace(productSize);
+      // req.body.productSize = await inputSpace(productSize);
       req.body.productPrice = Number(productPrice).toFixed(0);
-      req.body.productSalePrice = (productPrice - (productPrice * sale) / 100).toFixed(0);
+      // req.body.productSalePrice = (productPrice - (productPrice * sale) / 100).toFixed(0);
   
       
       try {

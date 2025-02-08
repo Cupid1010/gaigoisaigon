@@ -17,9 +17,18 @@ const {makeNumberSorter} = require('../../util/makeNumberSorter')
       const hotline = process.env.ADMIN_PHONE;
 
       const relatedProducts = await ProductModel.find({isAvailable:true});
-      console.log("🚀 ~ ProductsController ~ productDetail ~ relatedProducts:", relatedProducts)
+      
+
+      const amountOfproducts = await ProductModel.find({});
+
+      console.log("🚀 ~ ProductsController ~ productDetail ~ amountOfproducts:", amountOfproducts)
+      var numberOfProductWillShow = amountOfproducts.length;
+      if(numberOfProductWillShow>6) {
+        numberOfProductWillShow=6;
+      }
+      console.log("numberOfProductWillShow",numberOfProductWillShow)
       const randomList = [];
-      for(var i =0;i<6;) {
+      for(var i =0;i<numberOfProductWillShow;) {
 
         const rdnumber = Math.floor(Math.random() * relatedProducts.length)
         if(randomList.includes(rdnumber)) {
@@ -38,7 +47,7 @@ const {makeNumberSorter} = require('../../util/makeNumberSorter')
         return randomList.includes(index)
       })
 
-       console.log("hi")
+       console.log("hihi")
      
 
 

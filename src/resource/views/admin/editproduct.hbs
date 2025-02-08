@@ -6,25 +6,26 @@
     <label for="productName">Tên sản phẩm</label>
     <input type="text" class="form-control" id="productName" name='productName' placeholder="Vui lòng nhập" value='{{product.productName}}' required>
   </div>
+
   <div class="form-group">
     <label for="productPrice">Giá sản phẩm</label>
     <input type="text" class="form-control" id="productPrice" name='productPrice'  placeholder="Vui lòng nhập" value='{{product.productPrice}}' required>
-     <div class='updateSalePrice btn btn-primary'>Cập nhật giá sau khi sale</d>
+     {{!-- <div class='updateSalePrice btn btn-primary'>Cập nhật giá sau khi sale</d> --}}
   </div>
 
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="sale">Giảm giá bao nhiêu phần trăm</label>
     <p class='priceSale'></p>
     <input type="text" class="form-control" id="sale" name='sale' placeholder="Phần trăm giảm giá" min='0' max='100' required value='{{product.sale}}'>
     <div class='updateSalePercent btn btn-primary'>Cập % giảm giá theo giá gốc và giá đã sale</d>
-  </div>
+  </div> --}}
 
   {{!-- Chỉ ở client --}}
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="sale">Giá Sau Khi Sale</label>
     <input type="number" class="form-control" id="priceAfterSale" name='priceAfterSale' placeholder="Giá sau khi giảm">
       <div class='updateOriginPrice btn btn-primary'>Cập nhật giá gốc</div>
-  </div>
+  </div> --}}
   {{!-- Chỉ ở client --}}
 
   <div class="form-group">
@@ -37,18 +38,18 @@
   </div>
 
   
-
+{{!-- 
    <div class="form-group">
     <label for="productColor">Màu sắc</label>
     <input type="text" class="form-control" id="productColor" name='productColor' placeholder="Vui lòng nhập" value='{{product.productColor}}' required>
-  </div>
-<p>Giới tính</p>
+  </div> --}}
+{{!-- <p>Giới tính</p>
 
 <div class="d-flex">
     {{#renderRadioGender}}
             {{product}}
     {{/renderRadioGender}}
-</div>
+</div> --}}
 
 <p>Là sản phẩm đặc biệt</p>
 
@@ -71,10 +72,10 @@
     
 </div>
 
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="productSize">Nhập size sản phẩm</label>
     <input  type="text"  class="form-control" id="productSize" name='productSize' placeholder="Sử dụng khoảng trống giữa các size VD: 35 36 37" value='{{listSize}}' required>
-  </div>
+  </div> --}}
 
 
   
@@ -115,6 +116,57 @@
                 {{/checkIsTheSameValue }}
     </select>
   </div>
+
+    {{!-- gaigoi --}}
+  <div class="form-group">
+    <label for="productPhoneNumber:">Số điện thoại</label>
+      <input value='{{product.productPhoneNumber}}' type="text" name="productPhoneNumber" id="productPhoneNumber" class='form-control' required>
+  </div>
+  <div class="form-group">
+    <label for="yearsOfBirth:">Năm sinh</label>
+      <input value='{{product.yearsOfBirth}}' type="text" name="yearsOfBirth" id="yearsOfBirth" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="height:">Chiều cao</label>
+     <input value='{{product.height}}' type="number" name="height" id="height" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="threeRingMeasurements:">Số đo 3 vòng</label>
+      <input value='{{product.threeRingMeasurements}}' type="text" name="threeRingMeasurements" id="threeRingMeasurements" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="orgin:">Xuất sứ</label>
+      <input value='{{product.orgin}}' type="text" name="orgin" id="orgin" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="position:">Vị trí</label>
+      <input value='{{product.position}}' type="text" name="position" id="position" class='form-control' required>
+  </div>
+
+  <div class="form-group">
+    <label for="adress:">Địa chỉ</label>
+      <input value='{{product.adress}}' type="text" name="adress" id="adress" class='form-control' required>
+  </div>
+  
+  <div class="form-group">
+    <label for="workingTime:">Thời gian làm việc</label>
+      <input value='{{product.workingTime}}' type="text" name="workingTime" id="workingTime" class='form-control' required>
+  </div>
+  
+  <div class="form-group">
+    <label for="services:"></label>
+      <input value='{{product.services}}' type="text" name="services" id="services" class='form-control' required>
+  </div>
+  
+
+  {{!-- <div class="form-group">
+    <label for="productDescription">Mô tả sản phẩm</label>
+    <textarea  type="text"  class="form-control" id="productDescription" name='productDescription' placeholder="Mỗi mô tả một dòng" rows="10" cols="50" required></textarea>
+  </div> --}}
   
   
 
@@ -206,7 +258,19 @@ form.addEventListener('submit', (e) => {
 
     const weight = document.querySelector('input[name="weight"]');
     const quantitySold = document.querySelector('input[name="quantitySold"]');
-    console.log("🚀 ~ file: editproduct.hbs:111 ~ form.addEventListener ~ quantitySold:", quantitySold.value)
+  
+
+
+     //gaigoi
+    const productPhoneNumber = document.querySelector('input[name="productPhoneNumber"]');
+    const yearsOfBirth = document.querySelector('input[name="yearsOfBirth"]');
+    const height = document.querySelector('input[name="height"]');
+    const threeRingMeasurements = document.querySelector('input[name="threeRingMeasurements"]');
+    const orgin = document.querySelector('input[name="orgin"]');
+    const position = document.querySelector('input[name="position"]');
+    const adress = document.querySelector('input[name="adress"]');
+    const workingTime = document.querySelector('input[name="workingTime"]');
+    const services = document.querySelector('input[name="services"]');
 
     
     const formData = new FormData();
@@ -217,14 +281,23 @@ form.addEventListener('submit', (e) => {
     formData.append('productName',productName.value);
     formData.append('productPrice',productPrice.value);
     formData.append('productDescription',productDescription.value);
-    formData.append('sale',sale.value);
-    formData.append('productColor',productColor.value);
-    formData.append('productSize',productSize.value);
+    //formData.append('sale',sale.value);
+    //formData.append('productColor',productColor.value);
+    //formData.append('productSize',productSize.value);
     formData.append('brand',brand.value);
     formData.append('weight',weight.value);
     formData.append('quantitySold',quantitySold.value);
 
-
+   //gaigoi
+     formData.append('productPhoneNumber',productPhoneNumber.value);
+     formData.append('yearsOfBirth',yearsOfBirth.value);
+     formData.append('height',height.value);
+     formData.append('threeRingMeasurements',threeRingMeasurements.value);
+     formData.append('orgin',orgin.value);
+     formData.append('position',position.value);
+     formData.append('adress',adress.value);
+     formData.append('workingTime',workingTime.value);
+     formData.append('services',services.value);
 
     // Creates empty formData object
 
@@ -232,6 +305,8 @@ form.addEventListener('submit', (e) => {
     for(let i =0; i < files.files.length; i++) {
         formData.append("files", files.files[i]);
     }
+
+    console.log('formData',formData)
 
 
     // Appends value(s) of file input

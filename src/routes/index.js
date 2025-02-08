@@ -7,6 +7,7 @@ const ordersRouter = require('./order');
 const discountsRouter = require('./discount');
 const adminsRouter = require('./admin');
 const policysRouter = require('./policy');
+const policysCTV = require('./ctv');
 
 function route(app) {
   // http method
@@ -19,6 +20,7 @@ function route(app) {
   app.use('/discount', discountsRouter);
   app.use('/admin', adminsRouter);
   app.use('/policy', policysRouter);
+  app.use('/ctv', policysCTV);
 
   app.use('/', siteRouter);
 }

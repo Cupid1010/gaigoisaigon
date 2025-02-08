@@ -9,8 +9,8 @@
                 <h4>Đăng ký làm CTV</h4>
               </div>
               <div class='form_newsletter'>
-                <input placeholder='Nhập ID telegram' type='text' />
-                {{> slideBtn title="Đăng ký"}}
+                <input id='CTV-input' placeholder='Nhập ID telegram' type='text' />
+                {{> slideBtn class='CTV-btn' title="Đăng ký"}}
 
               </div>
             </div>
@@ -33,10 +33,10 @@
           <div class='col-lg-4 col-md-6 col-12'>
             <div class='footer_main-item'>
               <div class='support-item_header'>
-                <h3>GÁI GỌI SÀI GÒN</h3>
+                <h3>Gái Gọi Đức Phổ</h3>
               </div>
               <div class='support-item_content'>
-                Trang web Gái Gọi SÀI GÒN là nơi bạn có thể tìm kiếm và kết nối với những cô gái xinh đẹp, quyến rũ tại SÀI GÒN. Chúng tôi cam kết mang đến cho bạn trải nghiệm an toàn, bảo mật và đáng nhớ. Với thông tin chi tiết và hình ảnh chân thật, bạn sẽ dễ dàng lựa chọn được người bạn đồng hành hoàn hảo. Hãy khám phá và tận hưởng những khoảnh khắc tuyệt vời ngay hôm nay!
+                Trang web Gái Gọi Đức Phổ là nơi bạn có thể tìm kiếm và kết nối với những cô gái xinh đẹp, quyến rũ tại SÀI GÒN. Chúng tôi cam kết mang đến cho bạn trải nghiệm an toàn, bảo mật và đáng nhớ. Với thông tin chi tiết và hình ảnh chân thật, bạn sẽ dễ dàng lựa chọn được người bạn đồng hành hoàn hảo. Hãy khám phá và tận hưởng những khoảnh khắc tuyệt vời ngay hôm nay!
               </div>
               {{!-- <div class='chung-nhan-bo-cong-thuong'>
                <img src="/img/Featured/da-thong-bao-bo-cong-thuong-gif.gif" alt="">
@@ -55,12 +55,12 @@
                   <li class='support-item_content-item'>
                     <i class='fas fa-phone-square'></i>
 
-                    <a target='blank' href="https://t.me/+84392686494">+84392686494</a>
+                    <a target='blank' href="https://t.me/haohanmom">+84392686494</a>
                     
                   </li>
                   <li class='support-item_content-item'>
                     <i class='fas fa-paper-plane'></i>
-                    <a target='blank' href="https://t.me/+84392686494">tuvanvien</a>
+                    <a target='blank' href="https://t.me/haohanmom">tuvanvien</a>
                   </li>
                   <li class='support-item_content-item'></li>
                 </ul>
@@ -111,3 +111,30 @@
 
 </div>
 
+<script>
+  const ctvInput=document.querySelector('#CTV-input');
+  
+  const ctvBtn=document.querySelector('#CTV-btn');
+  console.log("🚀 ~ ctvInput:", ctvBtn)
+
+    console.log("HAHA")
+
+    ctvBtn.addEventListener('click',function(){
+      const ctvInputValue=ctvInput.value;
+              fetch("/ctv/postCTV", {
+              method: "POST",
+              body: JSON.stringify({
+                ctvID: ctvInputValue,
+              
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+            }
+        )
+    })
+  
+
+
+
+</script>
