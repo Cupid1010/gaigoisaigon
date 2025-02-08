@@ -3,7 +3,7 @@ const axios = require('axios');
 async function keepOnlineRenDerApp() {
     // Hàm gọi API
         async function fetchDataFromAPI() {
-            const apiUrl = 'https://gaigoisaigon.onrender.com';
+            const apiUrl = 'https://gaigoiducpho.onrender.com';
             // const apiUrl = 'http://127.0.0.1:3000/';
 
             try {
